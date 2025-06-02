@@ -3,6 +3,8 @@ import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
 import CoffeeShops from './pages/CoffeeShops';
 import Map from './pages/Map';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import { CoffeeShopsProvider } from './context/CoffeeShopsContext';
 import { Sun, Moon } from 'lucide-react';
 
@@ -11,12 +13,10 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check user's preferred color scheme
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDarkMode(true);
     }
     
-    // Listen for changes in color scheme preference
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
     mediaQuery.addEventListener('change', handleChange);
@@ -25,7 +25,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Apply dark mode class to document
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -45,6 +44,10 @@ function App() {
         return <CoffeeShops />;
       case 'mapa':
         return <Map />;
+      case 'privacidad':
+        return <Privacy />;
+      case 'terminos':
+        return <Terms />;
       default:
         return <Home onNavigate={setActivePage} />;
     }
@@ -55,7 +58,6 @@ function App() {
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-white transition-colors duration-300">
         <Navbar activePage={activePage} setActivePage={setActivePage} />
         
-        {/* Dark mode toggle */}
         <button 
           onClick={toggleDarkMode}
           className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-800 dark:hover:bg-gray-700"
@@ -70,7 +72,6 @@ function App() {
         
         {renderPage()}
         
-        {/* Footer */}
         <footer className="bg-amber-800 text-amber-100 py-8 dark:bg-gray-900 dark:border-t dark:border-gray-800">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-center">
@@ -82,9 +83,24 @@ function App() {
               </div>
               
               <div className="flex space-x-6">
-                <a href="#" className="text-amber-200 hover:text-white transition-colors dark:text-gray-400 dark:hover:text-white">Términos</a>
-                <a href="#" className="text-amber-200 hover:text-white transition-colors dark:text-gray-400 dark:hover:text-white">Privacidad</a>
-                <a href="#" className="text-amber-200 hover:text-white transition-colors dark:text-gray-400 dark:hover:text-white">Contacto</a>
+                <button 
+                  onClick={() => setActivePage('terminos')} 
+                  className="text-amber-200 hover:text-white transition-colors dark:text-gray-400 dark:hover:text-white"
+                >
+                  Términos
+                </button>
+                <button 
+                  onClick={() => setActivePage('privacidad')} 
+                  className="text-amber-200 hover:text-white transition-colors dark:text-gray-400 dark:hover:text-white"
+                >
+                  Privacidad
+                </button>
+                <a 
+                  href="mailto:contacto@coffimap.com" 
+                  className="text-amber-200 hover:text-white transition-colors dark:text-gray-400 dark:hover:text-white"
+                >
+                  Contacto
+                </a>
               </div>
             </div>
             
