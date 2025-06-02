@@ -14,7 +14,7 @@ const MapView: React.FC = () => {
   useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
-        apiKey: 'AIzaSyDwm6HVAlzRyjHdr6tYadKKQ4peYyPXxFQ', // Replace with your API key
+        apiKey: 'AIzaSyDwm6HVAlzRyjHdr6tYadKKQ4peYyPXxFQ',
         version: 'weekly',
         libraries: ['places']
       });
@@ -58,7 +58,6 @@ const MapView: React.FC = () => {
   useEffect(() => {
     if (!map) return;
 
-    // Clear existing markers
     markers.forEach(marker => marker.setMap(null));
     const newMarkers: google.maps.Marker[] = [];
 
@@ -103,7 +102,6 @@ const MapView: React.FC = () => {
 
     setMarkers(newMarkers);
 
-    // Add the selectCoffeeShop function to the window object for the InfoWindow
     (window as any).selectCoffeeShop = (shopId: string) => {
       const shop = filteredCoffeeShops.find(s => s.id === shopId);
       if (shop) {
@@ -127,7 +125,6 @@ const MapView: React.FC = () => {
     <div className="relative w-full h-[70vh] rounded-lg overflow-hidden shadow-lg">
       <div ref={mapRef} className="w-full h-full" />
       
-      {/* Map controls */}
       <div className="absolute top-4 right-4 flex flex-col space-y-2">
         <button 
           onClick={() => map?.setZoom((map.getZoom() || 15) + 1)}
@@ -143,7 +140,6 @@ const MapView: React.FC = () => {
         </button>
       </div>
 
-      {/* Map legend */}
       <div className="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow-md dark:bg-gray-800">
         <div className="text-sm font-semibold mb-2 dark:text-white">Leyenda</div>
         <div className="flex items-center text-xs text-gray-600 dark:text-gray-300">
