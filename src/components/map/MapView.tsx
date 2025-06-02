@@ -14,7 +14,7 @@ const MapView: React.FC = () => {
   useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
-        apiKey: 'YOUR_GOOGLE_MAPS_API_KEY', // Replace with your API key
+        apiKey: 'AIzaSyDwm6HVAlzRyjHdr6tYadKKQ4peYyPXxFQ', // Replace with your API key
         version: 'weekly',
         libraries: ['places']
       });
