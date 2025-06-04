@@ -14,7 +14,7 @@ const MapView: React.FC = () => {
   useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
-        apiKey: 'AIzaSyDwm6HVAlzRyjHdr6tYadKKQ4peYyPXxFQ',
+        apiKey: 'AIzaSyCl-bv3mGzGQe6xZ9w9FNQhAaDsFQmxfWw',
         version: 'weekly',
         libraries: ['places']
       });
