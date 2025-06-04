@@ -14,7 +14,7 @@ const MapView: React.FC = () => {
   useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
-        apiKey: 'AIzaSyCl-bv3mGzGQe6xZ9w9FNQhAaDsFQmxfWw',
+        apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
         version: 'weekly',
         libraries: ['places']
       });
